@@ -1,6 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const handleLogout =() =>{
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <header className="navbar">
       <div className="navbar-inner">
@@ -12,7 +17,7 @@ export default function Navbar() {
           <NavLink to="/users">משתמשים</NavLink>
         </nav>
 
-        <button className="btn btn-ghost">התנתק</button>
+<button className="btn btn-ghost" onClick={handleLogout}>התנתק</button>
       </div>
     </header>
   );
